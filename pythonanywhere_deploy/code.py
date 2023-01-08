@@ -181,10 +181,14 @@ def cat(call: types.CallbackQuery):
 @app.route('/{}'.format(SECRET), methods=["POST"])
 def webhook():
     if request.headers.get('content-type') == 'application/json':
-        json_string = request.stream.read().decode('utf-8')
-        update = types.Update.de_json(json_string)
-        bot.process_new_updates([update])
-        return 'ok', 200
+	try:
+	    json_string = request.stream.read().decode('utf-8')
+            update = types.Update.de_json(json_string)
+            bot.process_new_updates([update])
+            return 'ok', 200
+	except:
+	    logging.warning('BAD DATA')
+            abort(400)
     else:
         abort(403)
 
