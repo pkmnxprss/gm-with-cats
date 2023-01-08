@@ -1,0 +1,8 @@
+INFO:
+https://api.telegram.org/bot<Token>/getWebhookInfo
+
+DELETE:
+https://api.telegram.org/bot<Token>/setWebhook?url=
+
+SET:
+https://api.telegram.org/bot<Token>/setWebhook?url=https://<WEBHOOK_URL>
