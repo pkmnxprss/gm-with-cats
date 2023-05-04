@@ -8,7 +8,7 @@ def initialise() -> None:
     with sqlite3.connect(DB_NAME) as connection:
         cursor = connection.cursor()
         query = '''
-            CREATE TABLE IF NOT EXISTS users 
+            CREATE TABLE IF NOT EXISTS users
             (
                 id              INTEGER PRIMARY KEY AUTOINCREMENT,
                 telegram_id     INTEGER,
@@ -24,7 +24,7 @@ def create_user(telegram_id: int) -> None:
     with sqlite3.connect(DB_NAME) as connection:
         cursor = connection.cursor()
         query = '''
-            INSERT INTO users (telegram_id, limit_counter) 
+            INSERT INTO users (telegram_id, limit_counter)
             VALUES (?, 0)
                 '''
         params = (telegram_id,)
@@ -37,8 +37,8 @@ def user_exists(telegram_id: int) -> bool:
     with sqlite3.connect(DB_NAME) as connection:
         cursor = connection.cursor()
         query = '''
-            SELECT * 
-            FROM users 
+            SELECT *
+            FROM users
             WHERE telegram_id = ?
                 '''
         params = (telegram_id,)
@@ -51,7 +51,7 @@ def get_users() -> list:
     with sqlite3.connect(DB_NAME) as connection:
         cursor = connection.cursor()
         query = '''
-            SELECT telegram_id 
+            SELECT telegram_id
             FROM users
                 '''
         cursor.execute(query)
@@ -63,7 +63,7 @@ def get_limit_counter(telegram_id: int) -> int:
     with sqlite3.connect(DB_NAME) as connection:
         cursor = connection.cursor()
         query = '''
-            SELECT limit_counter 
+            SELECT limit_counter
             FROM users
             WHERE telegram_id = ?
                 '''

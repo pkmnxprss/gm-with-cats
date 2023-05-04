@@ -12,4 +12,4 @@ if __name__ == '__main__':
 
     reset_limit_counter()
     for user in get_users():
-        executor.start(dp, send_cat(telegram_id=user[0]))
+        executor.start(dp, send_cat(telegram_id=user[0], type='morning'))

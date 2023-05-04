@@ -22,7 +22,10 @@ async def cat(call: types.CallbackQuery):
     await call.message.answer_chat_action(action='typing')
     await sleep(1)
 
-    if db.get_limit_counter(call.from_user.id) < DAILY_LIMIT:
-        await send_cat(call.from_user.id)
+    counter = db.get_limit_counter(call.from_user.id)
+    if counter + 1 == DAILY_LIMIT:
+        await send_cat(telegram_id=call.from_user.id, type='night')
+    elif counter < DAILY_LIMIT:
+        await send_cat(telegram_id=call.from_user.id)
     else:
         await call.message.answer(text='На сегодня всё 😿')

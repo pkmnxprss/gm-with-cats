@@ -6,8 +6,8 @@
 # --------------------------------------------------- #
 
 if __name__ == '__main__':
-    from code import get_users, reset_limit_counter, send_cat
+    from main import get_users, reset_limit_counter, send_cat
 
     reset_limit_counter()
     for user in get_users():
-        send_cat(telegram_id=user[0], chat_id=user[0])
+        send_cat(telegram_id=user[0], chat_id=user[0], type='morning')
