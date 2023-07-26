@@ -1,7 +1,8 @@
+#MacOS
 .DS_Store
+.nova
+
 .idea
 __pycache__
 venv
 db.sqlite3
-.nova
-
